@@ -1,0 +1,33 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@master
+
+      - name: Install and Build 🔧
+        env:
+          REACT_APP_GIT_SHA: ${{ github.sha }}
+          REACT_APP_GA_UA: ${{ secrets.REACT_APP_GA_UA }}
+        run: |
+          yarn
+          yarn build
+
+      - name: Install SSH Client 🔑
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@3.4.6
+        with:
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          FOLDER: build
+          SSH: true
+          SINGLE_COMMIT: true
