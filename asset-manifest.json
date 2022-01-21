@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4a4137e4.chunk.css",
+    "main.js": "/static/js/main.d4ff1bf0.chunk.js",
+    "main.js.map": "/static/js/main.d4ff1bf0.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b1273f00.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b1273f00.js.map",
+    "static/js/2.1c2f8942.chunk.js": "/static/js/2.1c2f8942.chunk.js",
+    "static/js/2.1c2f8942.chunk.js.map": "/static/js/2.1c2f8942.chunk.js.map",
+    "static/js/3.5f29cd31.chunk.js": "/static/js/3.5f29cd31.chunk.js",
+    "static/js/3.5f29cd31.chunk.js.map": "/static/js/3.5f29cd31.chunk.js.map",
+    "static/js/4.1ae9f730.chunk.js": "/static/js/4.1ae9f730.chunk.js",
+    "static/js/4.1ae9f730.chunk.js.map": "/static/js/4.1ae9f730.chunk.js.map",
+    "09f0ce946af7f42ccb05.worker.js": "/09f0ce946af7f42ccb05.worker.js",
+    "09f0ce946af7f42ccb05.worker.js.map": "/09f0ce946af7f42ccb05.worker.js.map",
+    "index.html": "/index.html",
+    "service-worker.js": "/service-worker.js",
+    "service-worker.js.map": "/service-worker.js.map",
+    "static/css/main.4a4137e4.chunk.css.map": "/static/css/main.4a4137e4.chunk.css.map",
+    "static/js/2.1c2f8942.chunk.js.LICENSE.txt": "/static/js/2.1c2f8942.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b1273f00.js",
+    "static/js/2.1c2f8942.chunk.js",
+    "static/css/main.4a4137e4.chunk.css",
+    "static/js/main.d4ff1bf0.chunk.js"
+  ]
+}
