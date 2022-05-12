@@ -4,7 +4,7 @@ Dicey is based on the wonderful [AnyDice](https://anydice.com/) made by [Jasper 
 
 ### Basics
 
-Dicey fundamentally operates as a calculator, but instead of operating only on numbers, it can also operate on probabilities.
+Dicey fundamentally operates as a calculator, but instead of operating only on numbers, it can also operate on probabilties.
 
 As an overly simple example, let's add two and two together. You can click on the example to load it.
 
@@ -21,13 +21,13 @@ output 2+2\*2</kbd>
 
 As a simple example, <kbd>3d6</kbd> represents rolling three six-sided dice.
 
-The arguments to the die operator aren't limited to numbers. If a <kbd>d{4,5,10}</kbd> sets is passed to the right hand argument, the elements of that set will make up the sides of the die. Similarly a probability can be used as the second argument to give chance to roll die with that number of sides. <kbd>2d(d6)</kbd> would be analogous to rolling a d6 to determine which type of dice to pick up, and then rolling two of those types of dice.
+The arguements to the die operator aren't limited to numbers. If a <kbd>d{4,5,10}</kbd> sets is passed to the right hand argument, the elements of that set will make up the sides of the die. Similally a probaility can be used as the second arguement to give chance to roll die with that number of sides. <kbd>2d(d6)</kbd> would be analgous to rolling a d6 to determin which type of dice to pick up, and then rolling two of those types of dice.
 
 ### Sets
 
-Sets are formed by placing comma separated elements between `{}`'s. For example <kbd>{3,4,5}</kbd> is a set of three numbers. By default, the elements of a set are added together and displayed as one number. This can be disabled with the `collapse` toggle at the bottom of the calculator page. Sets are by convention stored in descending order.
+Sets are formed by placing comma seperated elements between `{}`'s. For example <kbd>{3,4,5}</kbd> is a set of three numbers. By default, the elements of a set are added together and displyed as one number. This can be disabled with the `collapse` toggle at the bottom of the calculator page. Sets are by convention stored in decending order.
 
-&gt; <kbd>{3d6, d10} kh 1</kbd> - Take the highest roll between `3d6` and `d10`.
+&gt; <kbd>{3d6, d10} kh 1</kbd> - Take the higest roll between `3d6` and `d10`.
 
 ### Operators
 

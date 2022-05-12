@@ -1,6 +1,12 @@
 import React, { Suspense, useState, useEffect } from "react";
 import clsx from "clsx";
-import { BrowserRouter, Route, Switch, useHistory, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import { blue, pink } from "@material-ui/core/colors";
 import {
   makeStyles,
@@ -9,10 +15,7 @@ import {
   createMuiTheme,
 } from "@material-ui/core/styles";
 
-import {
-  useRecoilState,
-  useRecoilValue,
-} from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import Navigation from "./components/Navigation";
 
@@ -58,7 +61,6 @@ let dox = require.context("!raw-loader!./docs", false, /\.md$/);
 const useStyles = makeStyles(styles);
 
 export function Analytics() {
-
   const location = useLocation();
 
   useEffect(() => {
@@ -125,7 +127,7 @@ export default function App() {
   const waitingWorker = useRecoilValue(state.waitingWorker);
   const update = () => {
     console.log("UPDATE!");
-    waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+    waitingWorker.postMessage({ type: "SKIP_WAITING" });
     setShowReload(false);
     window.location.reload(true);
   };
@@ -136,7 +138,7 @@ export default function App() {
         <BrowserRouter>
           <div className={classes.root}>
             <CssBaseline />
-            <Snackbar 
+            <Snackbar
               message="A new version of the app is available!"
               action={
                 <Button onClick={update} color="inherit" size="small">
@@ -146,8 +148,7 @@ export default function App() {
               open={showReload}
               autoHideDuration={6000}
               onClose={() => setShowReload(false)}
-            >
-            </Snackbar>
+            ></Snackbar>
             <AppBar
               position="absolute"
               className={clsx(classes.appBar, amOpen && classes.appBarShift)}

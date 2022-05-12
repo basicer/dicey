@@ -10,9 +10,7 @@ import {
 } from "../material";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import {
-  useRecoilValue,
-} from "recoil";
+import { useRecoilValue } from "recoil";
 
 import * as state from "../state";
 

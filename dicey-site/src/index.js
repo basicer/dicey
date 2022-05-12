@@ -1,10 +1,10 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 import * as state from "./state";
 import { useSetRecoilState, RecoilRoot } from "recoil";
@@ -18,19 +18,18 @@ function Root() {
       onUpdate: (registration) => {
         setShowReload(true);
         setWaitingWorker(registration.waiting);
-      }
+      },
     });
   }, [setShowReload, setWaitingWorker]);
 
-  return (
-      <App />
-  );
-
+  return <App />;
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot><Root /></RecoilRoot>
+    <RecoilRoot>
+      <Root />
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -9,9 +9,7 @@ import {
   MenuItem,
 } from "../material";
 
-import {
-  useRecoilState,
-} from "recoil";
+import { useRecoilState } from "recoil";
 
 import * as state from "../state";
 

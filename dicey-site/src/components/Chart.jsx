@@ -1,18 +1,33 @@
 import { Chart as ChartComponent } from "react-chartjs-2";
-import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScale, Title, Legend, CategoryScale, Tooltip } from 'chart.js';
-
+import {
+  Chart as ChartJS,
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  Legend,
+  CategoryScale,
+  Tooltip,
+} from "chart.js";
 
 import { useTheme } from "@material-ui/core";
 import { useState, useEffect } from "react";
 
-import {
-  useRecoilValue,
-} from "recoil";
+import { useRecoilValue } from "recoil";
 
 import * as state from "../state";
 
-ChartJS.register(LineController, LineElement, PointElement, LinearScale, Legend, Title, CategoryScale, Tooltip);
-
+ChartJS.register(
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  Legend,
+  Title,
+  CategoryScale,
+  Tooltip
+);
 
 export const CHART_COLORS = {
   blue: "rgb(54, 162, 235)",
@@ -51,7 +66,7 @@ export default function Chart() {
         return {
           id: `data${i}`,
           //label: s.name,
-          label: (s.nameIsValue || s.named) ? s.name : `output ${i + 1}`,
+          label: s.nameIsValue || s.named ? s.name : `output ${i + 1}`,
           parsing: false,
           data: labels.map((x) => {
             // eslint-disable-next-line eqeqeq

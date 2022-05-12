@@ -1,8 +1,7 @@
-
 let parser;
 
 try {
-  parser = require('../pegjs-loader.js!./parser.js');
+  parser = require("../pegjs-loader.js!./parser.js");
 } catch (e) {
   parser = require("pegjs").generate(require("./parser.js"));
 }

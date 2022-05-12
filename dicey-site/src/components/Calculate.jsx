@@ -16,7 +16,7 @@ import {
 import { useLocation } from "react-router-dom";
 import Chart from "./Chart";
 import { makeStyles } from "@material-ui/core/styles";
-import { debug } from "dicey-math";
+import { debug } from "dicey.js";
 import {
   useRecoilState,
   useRecoilValue,
@@ -29,7 +29,6 @@ import CalcTable from "./CalcTable";
 import OptionBar from "./OptionBar";
 
 import * as state from "../state";
-
 
 function rollOn(l) {
   let acc = 100 * Math.random();
@@ -56,7 +55,12 @@ class SilentErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <><div>Error</div><pre>${this.state.error.toString()}</pre></>;
+      return (
+        <>
+          <div>Error</div>
+          <pre>${this.state.error.toString()}</pre>
+        </>
+      );
     }
 
     return this.props.children;

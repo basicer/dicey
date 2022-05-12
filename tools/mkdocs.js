@@ -42,4 +42,4 @@ ${desc}
 ${examples.map(e => `&gt; ${e.trim()}\n\n`).join('')}
 `).join("\n")
 
-fs.writeFileSync(join(__dirname, '..', 'src', 'docs', 'functions.md'), out, 'utf8');
+fs.writeFileSync(join(__dirname, '..', 'dicey-site', 'src', 'docs', 'functions.md'), out, 'utf8');

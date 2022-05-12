@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install and Build 🔧
+        working-directory: dicey-site
         env:
           REACT_APP_GIT_SHA: ${{ github.sha }}
           REACT_APP_GA_UA: ${{ secrets.REACT_APP_GA_UA }}
@@ -28,6 +29,6 @@ jobs:
         with:
           BASE_BRANCH: master
           BRANCH: gh-pages
-          FOLDER: build
+          FOLDER: ./dicey-site/build
           SSH: true
           SINGLE_COMMIT: true

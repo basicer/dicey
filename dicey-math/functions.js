@@ -118,18 +118,20 @@ function explode(...args) {
 
 /**
  * Merge two probability clouds weighed by condition.
- * @param  {Value} condition 
+ * @param  {Value} condition
  * @param  {Value} concequent
  * @param  {Value} alternate
- * @returns 
+ * @returns
  * @example <kbd>iif(d20+5&gt;12, d8+5, 0)</kbd>
  */
 function iif(condition, concequent, alternate) {
-  if(!condition || !concequent) throw new Error(`function iif requires a least two arguments`);
+  if (!condition || !concequent)
+    throw new Error(`function iif requires a least two arguments`);
   let parts = condition.denseCloud();
-  if (parts.values.length > 2) throw new Error(`Condition must only have two outcomes`);
+  if (parts.values.length > 2)
+    throw new Error(`Condition must only have two outcomes`);
 
-  concequent = concequent || new NumberValue(0)
+  concequent = concequent || new NumberValue(0);
   alternate = alternate || new NumberValue(0);
 
   let cw = 0;
@@ -138,15 +140,16 @@ function iif(condition, concequent, alternate) {
   for (let o of parts.values) {
     if (parseInt(o.k) === 1) {
       cw = o.w;
-    }
-    else if (parseInt(o.k) === 0) {
+    } else if (parseInt(o.k) === 0) {
       aw = o.w;
-    }
-    else throw new Error(`Condition cloud must only contain 1 and 0, found ${o.k}`);
+    } else
+      throw new Error(
+        `Condition cloud must only contain 1 and 0, found ${o.k}`
+      );
   }
 
-  if ( aw === 0 ) return concequent;
-  if ( cw === 0 ) return alternate;
+  if (aw === 0) return concequent;
+  if (cw === 0) return alternate;
 
   let C = new CloudBuilder();
   for (let v of concequent.cloud().values) {
@@ -157,7 +160,6 @@ function iif(condition, concequent, alternate) {
   }
 
   return C.done();
-
 }
 
 /**

@@ -1,9 +1,6 @@
-import {
-  atom,
-  selector,
-} from "recoil";
+import { atom, selector } from "recoil";
 
-import { parser } from "dicey-math";
+import { parser } from "dicey.js";
 import worker from "workerize-loader!./worker"; // eslint-disable-line import/no-webpack-loader-syntax
 
 let workerInstance = worker();
@@ -23,9 +20,8 @@ export let parsed = selector({
   },
 });
 
-export let showReload = atom({key: "showReload", default: false});
+export let showReload = atom({ key: "showReload", default: false });
 export let waitingWorker = atom({ key: "waitingWorker", default: null });
-
 
 export let collapse = atom({ key: "collapse", default: true });
 export let mode = atom({ key: "mode", default: "normal" });

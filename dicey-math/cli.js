@@ -5,7 +5,7 @@ let ast;
 
 try {
   ast = parser.parse(exp);
-} catch ( e ) {
+} catch (e) {
   console.log(e.toString());
   process.exit(1);
 }

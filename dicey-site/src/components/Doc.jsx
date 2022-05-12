@@ -86,18 +86,20 @@ export default function Docs({ markdown }) {
 
   return (
     <>
-    <Paper className={classes.doc}>
-      {typeof markdown == "string" && (
-        <Markdown options={options}>{markdown}</Markdown>
-      )}
-      {markdown === false && (
-        <Backdrop className={classes.backdrop}>
-          <CircularProgress size="200px" />
-        </Backdrop>
-      )}
-    </Paper>
-    <br />
-    <div className={classes.muted}>{process.env.REACT_APP_GIT_SHA || '-'}</div>
+      <Paper className={classes.doc}>
+        {typeof markdown == "string" && (
+          <Markdown options={options}>{markdown}</Markdown>
+        )}
+        {markdown === false && (
+          <Backdrop className={classes.backdrop}>
+            <CircularProgress size="200px" />
+          </Backdrop>
+        )}
+      </Paper>
+      <br />
+      <div className={classes.muted}>
+        {process.env.REACT_APP_GIT_SHA || "-"}
+      </div>
     </>
   );
 }

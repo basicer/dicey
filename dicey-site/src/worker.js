@@ -1,4 +1,4 @@
-import { valueize, keyComp } from "dicey-math";
+import { valueize, keyComp } from "dicey.js";
 
 console.log("Loading worker");
 
@@ -20,7 +20,11 @@ export async function compute({ collapse, parsed, mode, transpose }) {
       uv: (100 * v.w) / c.total,
     }));
     entries.sort((a, b) => keyComp(a.name, b.name));
-    return { entries, name: (V && V.name) || "output", named: !!(V && V.named) };
+    return {
+      entries,
+      name: (V && V.name) || "output",
+      named: !!(V && V.named),
+    };
   });
 
   if (transpose) {

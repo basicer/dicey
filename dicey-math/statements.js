@@ -1,7 +1,7 @@
 class Output {
   constructor(e, name, text) {
     this.expression = e;
-    this.name = name || text || 'output';
+    this.name = name || text || "output";
     this.named = !!name;
   }
   get type() {
