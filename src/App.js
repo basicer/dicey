@@ -64,8 +64,9 @@ export function Analytics() {
   useEffect(() => {
     if (!process.env.REACT_APP_GA_UA) return;
 
-    import('react-ga').then((ReactGA) => {
-      ReactGA.initialize(process.env.REACT_APP_GA_UA);
+    import('react-ga4').then((mod) => {
+      let ReactGA = mod.default;
+      ReactGA.initialize([{trackingId: process.env.REACT_APP_GA_UA}]);
       ReactGA.pageview(location.pathname + location.search);
     });
   }, [location]);
