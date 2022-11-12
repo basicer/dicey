@@ -42,7 +42,7 @@ Call =
   }
 
 
-Compare = m:$('cs' / 'ms' / 'ro' / 'zu')? o:$([<>]'='?/'=='/'!='/'=') { return m ? {m: m, op: o} : {op: o}; }
+Compare = m:$('cs'i / 'ms'i / 'ro'i / 'zu'i)? o:$([<>]'='?/'=='/'!='/'=') { return m ? {m: m, op: o} : {op: o}; }
 
 P1Bin = l:P2Bin o:(WS e:Compare WS r:P2Bin)* { return math(l,o) } / P2Bin
 P2Bin = l:P3Bin o:(WS e:[+-] WS r:P3Bin)* { return math(l,o); } / P3Bin
@@ -51,10 +51,10 @@ P4Bin =
   l:Primary o:(WS e:(DropLow/DropHigh/KeepLow/KeepHigh/'@') WS r:Primary?)* { return math(l,o) } /
   Primary
 
-DropLow = ('droplow' / 'dl') { return 'dl'; } 
-KeepLow = ('keeplow' / 'kl') { return 'kl'; } 
-DropHigh = ('drophigh' / 'dh') { return 'dh'; } 
-KeepHigh = ('keephigh' / 'kh') { return 'kh'; } 
+DropLow = ('droplow'i / 'dl'i) { return 'dl'; } 
+KeepLow = ('keeplow'i / 'kl'i) { return 'kl'; } 
+DropHigh = ('drophigh'i / 'dh'i) { return 'dh'; } 
+KeepHigh = ('keephigh'i / 'kh'i) { return 'kh'; } 
 
 Primary = Value / '(' WS e:Expression WS ')' { return e }
 Numbery = Number / '(' WS e:Expression WS ')' { return e }
@@ -79,17 +79,17 @@ Cloud =
     if (n === 1) return d;
     return { type: 'die', times: n, sides: d.sides }
   } /
-  n:Numbery WS 'd' WS d:Set {
+  n:Numbery WS 'd'i WS d:Set {
     return { type: 'die', times: n, sides: d };
   } /
-  'd' WS d:Set {
+  'd'i WS d:Set {
     return { type: 'die', sides: d };
   }
 
 Die =
-  'd' n:Numbery { return {type: 'die', sides: n}; } /
-  'd%' { return {type: 'die', sides: 100}; } /
-  'dF' { return {type: 'die', sides: { type: 'set', elements: [-1, 0, 1] } }; }
+  'd'i n:Numbery { return {type: 'die', sides: n}; } /
+  'd%'i { return {type: 'die', sides: 100}; } /
+  'dF'i { return {type: 'die', sides: { type: 'set', elements: [-1, 0, 1] } }; }
  
 
 Number = d:$([-]?[0-9]+) { return parseInt(d); }

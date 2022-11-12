@@ -3,7 +3,7 @@ let fs = require('fs');
 let fxs = fs.readFileSync(join(__dirname, '..', 'dicey-math', 'functions.js'), 'utf8');
 
 let found = [];
-for ( let [m,doc,name] of fxs.matchAll(/\/\*\*(.*?)\*\/\s+function ([a-z]+)/ismg) ) {
+for ( let [m,doc,name] of fxs.matchAll(/\/\*\*\n(.*?)\*\/\s+function ([a-z]+)/ismg) ) {
     let lines = doc.split(/\n/g);
     let desc = '';
     let examples = []; 
