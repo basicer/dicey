@@ -5,7 +5,7 @@ const {
   ksort,
   ntimes,
   StringValue,
-  Cloud
+  Cloud,
 } = require("./values");
 
 /** @typedef {SetValue|NumberValue|StringValue|Cloud} Value  */

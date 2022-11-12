@@ -59,8 +59,6 @@ class CloudBuilder {
   }
 }
 
-
-
 class Die {
   get type() {
     return "die";
@@ -125,7 +123,6 @@ function cross(a, b) {
 
   return C.done();
 }
-
 
 class Call {
   constructor(name, args) {

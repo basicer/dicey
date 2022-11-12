@@ -56,15 +56,19 @@ export default function Docs({ page }) {
   const classes = useStyles();
   const [markdown, setMarkdown] = useState(null);
 
-  useEffect(() => (async () => {
-    try {
-      let url = await import(`../docs/${page}.md`);
-      let data = await fetch(url.default);
-      setMarkdown(await data.text());
-    } catch (e) {
-      setMarkdown(false);
-    }
-  })(), [page])
+  useEffect(
+    () =>
+      (async () => {
+        try {
+          let url = await import(`../docs/${page}.md`);
+          let data = await fetch(url.default);
+          setMarkdown(await data.text());
+        } catch (e) {
+          setMarkdown(false);
+        }
+      })(),
+    [page]
+  );
 
   let options = {
     overrides: {
@@ -106,9 +110,7 @@ export default function Docs({ page }) {
             <CircularProgress size="200px" />
           </Backdrop>
         )}
-        {markdown === false && (
-            <h1>404</h1>
-        )}
+        {markdown === false && <h1>404</h1>}
       </Paper>
       <br />
       <div className={classes.muted}>

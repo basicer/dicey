@@ -6,11 +6,7 @@ try {
   parser = require("pegjs").generate(require("./parser.js"));
 }
 
-let {
-  debug,
-  valueize,
-  keyComp
-} = require('./utils');
+let { debug, valueize, keyComp } = require("./utils");
 
 let roll = require("./roll");
 
@@ -20,9 +16,7 @@ let roll = require("./roll");
  */
 
 class ParseResult {
-  constructor() {
-
-  }
+  constructor() {}
 
   /**
    * @returns {string}
@@ -44,16 +38,16 @@ class ParseResult {
   }
 
   /**
- * @returns {Output}
- */
+   * @returns {Output}
+   */
   output() {
     return this.result.output();
   }
 }
 
 /**
- * 
- * @param {String} code 
+ *
+ * @param {String} code
  * @returns {ParseResult}
  */
 module.exports = (code) => {

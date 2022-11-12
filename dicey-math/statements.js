@@ -13,7 +13,7 @@ class Output {
   }
 
   /**
-   * 
+   *
    * @returns {Cloud}
    */
   denseCloud() {
@@ -21,7 +21,7 @@ class Output {
   }
 
   /**
-   * 
+   *
    * @returns {Cloud}
    */
   cloud() {
@@ -38,7 +38,7 @@ class Block {
   }
 
   /**
-   * 
+   *
    * @returns {Output}
    */
   output() {

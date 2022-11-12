@@ -67,9 +67,9 @@ export function Analytics() {
   useEffect(() => {
     if (!process.env.REACT_APP_GA_UA) return;
 
-    import('react-ga4').then((mod) => {
+    import("react-ga4").then((mod) => {
       let ReactGA = mod.default;
-      ReactGA.initialize([{trackingId: process.env.REACT_APP_GA_UA}]);
+      ReactGA.initialize([{ trackingId: process.env.REACT_APP_GA_UA }]);
       ReactGA.pageview(location.pathname + location.search);
     });
   }, [location]);
@@ -203,7 +203,7 @@ export default function App() {
                     <Route
                       path="/:page"
                       render={({ match }) => {
-                          return <Docs page={match.params.page} />;
+                        return <Docs page={match.params.page} />;
                       }}
                     />
                   </Switch>

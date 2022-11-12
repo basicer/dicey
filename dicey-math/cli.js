@@ -2,12 +2,11 @@
 
 let parse = require("./index");
 
-
-let mode = 'cloud';
+let mode = "cloud";
 
 let args = process.argv.slice(2);
 
-while ( args[0] && args[0].startsWith("--") ) {
+while (args[0] && args[0].startsWith("--")) {
   let argument = args.shift().substr(2);
   switch (argument) {
     case "roll":
@@ -19,7 +18,6 @@ while ( args[0] && args[0].startsWith("--") ) {
   }
 }
 
-
 let exp = args.join(" ");
 let ast;
 
@@ -30,20 +28,20 @@ try {
   process.exit(1);
 }
 
-if ( mode == "roll" ) {
+if (mode == "roll") {
   let [line] = ast.roll();
   console.log(line);
   function str(n, d) {
-    if (typeof(n) == "number") return String(n);
+    if (typeof n == "number") return String(n);
     if (n.depth <= d) return n.boiled || n.value;
-    return n.str.map(v => typeof(v) == "number" ? str(n.parts[v], d) : v).join("");
+    return n.str
+      .map((v) => (typeof v == "number" ? str(n.parts[v], d) : v))
+      .join("");
   }
 
-
-  for ( let i = 0; i < line.depth + 1; ++i ) console.log(i, str(line, i));
+  for (let i = 0; i < line.depth + 1; ++i) console.log(i, str(line, i));
   process.exit(1);
 }
-
 
 let dcs = ast.output();
 
@@ -53,8 +51,9 @@ for (let op of dcs) {
   if (dc.sum) console.log(op.name + ":", "\t", "Avg: ", dc.sum / dc.total);
   else console.log(op.name + ":");
 
-
-  let max = dc.values.map(v => v.w / dc.total).reduce((a,b) => a>b ? a : b, 0);
+  let max = dc.values
+    .map((v) => v.w / dc.total)
+    .reduce((a, b) => (a > b ? a : b), 0);
   let scale = 30 / max;
 
   for (let v of dc.values) {
@@ -64,7 +63,7 @@ for (let op of dcs) {
     console.log(
       [
         v.k,
-        (share < 0.1 ? ' ' : '') + (100 * share).toFixed(2) + "%",
+        (share < 0.1 ? " " : "") + (100 * share).toFixed(2) + "%",
         //v.w,
         new Array(Math.floor(scale * share)).fill("*").join(""),
       ].join("\t")
