@@ -66,7 +66,7 @@ Find the minimum possible outcome in a field.
 
 &gt; <kbd>min(d6)</kbd> = 1
 
-&gt; <kbd>min(3d6)</kbd> = 2
+&gt; <kbd>min(3d6)</kbd> = 3
 
 
 
