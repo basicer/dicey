@@ -77,7 +77,7 @@ function min(v) {
  * @param {*} v
  * @returns
  * @example <kbd>mean(d6)</kbd> = 3.5
- * @example <kbd>mean(3d6)</kbd> = 9.6
+ * @example <kbd>mean(3d6)</kbd> = 10.5
  */
 function mean(v) {
   arity(this, 1);
