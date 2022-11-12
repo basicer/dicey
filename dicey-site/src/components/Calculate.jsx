@@ -16,7 +16,7 @@ import {
 import { useLocation } from "react-router-dom";
 import Chart from "./Chart";
 import { makeStyles } from "@material-ui/core/styles";
-import { debug } from "dicey.js";
+
 import {
   useRecoilState,
   useRecoilValue,
@@ -261,7 +261,7 @@ function ZAlert() {
   const parsed = useRecoilValue(state.parsed);
   return (
     <Alert severity="info" style={{ fontFamily: "monospace" }}>
-      {parsed.v ? debug(parsed.v) : ""}
+      {parsed.v ? parsed.v.debugString : ""}
     </Alert>
   );
 }

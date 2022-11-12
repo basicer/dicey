@@ -1,10 +1,11 @@
-import { valueize, keyComp } from "dicey.js";
+import { rehydrate, keyComp } from "dicey.js";
 
 console.log("Loading worker");
 
 export async function compute({ collapse, parsed, mode, transpose }) {
   if (!parsed.v) return [];
-  let o = valueize(parsed.v);
+  console.log(parsed.v);
+  let o = rehydrate(parsed.v);
   let output = o.output().map((V) => {
     let c;
     try {

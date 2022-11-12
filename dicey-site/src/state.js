@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
 
-import { parser } from "dicey.js";
+import compile from "dicey.js";
 import worker from "workerize-loader!./worker"; // eslint-disable-line import/no-webpack-loader-syntax
 
 let workerInstance = worker();
@@ -12,7 +12,7 @@ export let parsed = selector({
   get: ({ get }) => {
     let expression = get(query);
     try {
-      let x = parser.parse(expression);
+      let x = compile(expression);
       return { ok: true, v: x };
     } catch (e) {
       return { ok: false, error: e };

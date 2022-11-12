@@ -14,5 +14,8 @@
   "devDependencies": {
     "jest": "^27.0.6",
     "node-fetch": "^2.6.1"
+  },
+  "bin": {
+    "dicey": "./cli.js"
   }
 }

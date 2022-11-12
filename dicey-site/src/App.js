@@ -12,7 +12,7 @@ import {
   makeStyles,
   ThemeProvider,
   darken,
-  createMuiTheme,
+  createTheme,
 } from "@material-ui/core/styles";
 
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -57,7 +57,8 @@ import Docs from "./components/Doc";
 
 import * as state from "./state";
 
-let dox = require.context("!raw-loader!./docs", false, /\.md$/);
+let dox = require.context("./docs?raw", false, /\.doc$/);
+window.dox = dox;
 const useStyles = makeStyles(styles);
 
 export function Analytics() {
@@ -84,7 +85,7 @@ export default function App() {
   paletteType = paletteType || (isDark ? "dark" : "light");
 
   const theme = React.useMemo(() => {
-    const nextTheme = createMuiTheme({
+    const nextTheme = createTheme({
       palette: {
         primary: {
           main: paletteType === "light" ? blue[700] : blue[200],
@@ -202,10 +203,7 @@ export default function App() {
                     <Route
                       path="/:page"
                       render={({ match }) => {
-                        let path = `./${match.params.page}.md`;
-                        if (dox.keys().indexOf(path) !== -1)
-                          return <Docs markdown={dox(path).default} />;
-                        else return <h1>404</h1>;
+                          return <Docs page={match.params.page} />;
                       }}
                     />
                   </Switch>

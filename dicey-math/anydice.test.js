@@ -1,7 +1,6 @@
-const { parser, valueize } = require("./index");
+const parse = require("./index");
 const fs = require("fs");
 const path = require("path");
-const crypto = require("crypto");
 
 let cached = {};
 let cachePath = path.join(__dirname, "anydice-cache.json");
@@ -50,7 +49,8 @@ function anytest(dice, anydice = null) {
     let adr = await query(anydice);
     expect(adr.error).toBeUndefined();
 
-    let or = valueize(parser.parse(dice)).output()[0].denseCloud();
+    let w = parse(dice);
+    let or = w.output()[0].denseCloud();
 
     let d1 = adr.distributions.data[0].filter((x) => x[0] !== null);
     let d2 = or.values.map((v) => [v.k[0], (100 * v.w) / or.total]);

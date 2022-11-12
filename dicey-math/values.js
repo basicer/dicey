@@ -59,6 +59,8 @@ class CloudBuilder {
   }
 }
 
+
+
 class Die {
   get type() {
     return "die";
@@ -124,18 +126,6 @@ function cross(a, b) {
   return C.done();
 }
 
-class Block {
-  get type() {
-    return "block";
-  }
-  constructor(body) {
-    this.body = body;
-  }
-
-  output() {
-    return this.body;
-  }
-}
 
 class Call {
   constructor(name, args) {
@@ -520,7 +510,6 @@ module.exports = {
   NumberValue,
   BinaryOperation,
   Call,
-  Block,
   CloudBuilder,
   StringValue,
   ksort,

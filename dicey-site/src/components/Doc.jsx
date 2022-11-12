@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink as RouterLink } from "react-router-dom";
 import {
   Paper,
@@ -52,8 +52,19 @@ export function Example({ children }) {
   );
 }
 
-export default function Docs({ markdown }) {
+export default function Docs({ page }) {
   const classes = useStyles();
+  const [markdown, setMarkdown] = useState(null);
+
+  useEffect(() => (async () => {
+    try {
+      let url = await import(`../docs/${page}.md`);
+      let data = await fetch(url.default);
+      setMarkdown(await data.text());
+    } catch (e) {
+      setMarkdown(false);
+    }
+  })(), [page])
 
   let options = {
     overrides: {
@@ -90,10 +101,13 @@ export default function Docs({ markdown }) {
         {typeof markdown == "string" && (
           <Markdown options={options}>{markdown}</Markdown>
         )}
-        {markdown === false && (
+        {markdown === null && (
           <Backdrop className={classes.backdrop}>
             <CircularProgress size="200px" />
           </Backdrop>
+        )}
+        {markdown === false && (
+            <h1>404</h1>
         )}
       </Paper>
       <br />

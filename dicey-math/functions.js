@@ -5,7 +5,10 @@ const {
   ksort,
   ntimes,
   StringValue,
+  Cloud
 } = require("./values");
+
+/** @typedef {SetValue|NumberValue|StringValue|Cloud} Value  */
 
 let arity = (fn, n) => {
   if (fn.arguments.length != n)
@@ -17,7 +20,7 @@ let arity = (fn, n) => {
 /**
  * Add the elements of each set together into a single field.
  * @param  {...Value} args
- * @returns
+ * @returns {Value}
  * @example <kbd>sum(1, 2, 3)</kbd> = <kbd>6</kbd>
  * @example <kbd>sum(1, d6, 3d6)</kbd> = <kbd>4d6+1</kbd>
  */
@@ -46,7 +49,7 @@ function set(...args) {
 }
 /**
  * Find the maximum possible outcome in a field.
- * @param {*} v
+ * @param {Value} v
  * @returns
  * @example <kbd>max(d6)</kbd> = 6
  * @example <kbd>max(3d6)</kbd> = 18
@@ -60,7 +63,7 @@ function max(v) {
 
 /**
  * Find the minimum possible outcome in a field.
- * @param {*} v
+ * @param {Value} v
  * @returns
  * @example <kbd>min(d6)</kbd> = 1
  * @example <kbd>min(3d6)</kbd> = 2
@@ -74,7 +77,7 @@ function min(v) {
 
 /**
  * Find the mean outcome in a field.
- * @param {*} v
+ * @param {Value} v
  * @returns
  * @example <kbd>mean(d6)</kbd> = 3.5
  * @example <kbd>mean(3d6)</kbd> = 10.5

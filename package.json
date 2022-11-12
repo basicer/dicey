@@ -11,7 +11,7 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "start-site": "npm run -w dicey-start start",
+    "start-site": "npm run -w dicey-site start",
     "format": "prettier -w ./dicey-site/src/**/*.js ./dicey-site/src/docs/*.md ./dicey-site/src/**/*.jsx ./dicey-math/*.js",
     "test": "npm run -w dicey-math test"
   },
