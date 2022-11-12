@@ -29,6 +29,6 @@ jobs:
         with:
           BASE_BRANCH: master
           BRANCH: gh-pages
-          FOLDER: ./dicey-site/build
+          FOLDER: dicey-site/build
           SSH: true
           SINGLE_COMMIT: true
