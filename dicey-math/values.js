@@ -417,6 +417,34 @@ class BinaryOperation {
       return ntimes(this.left, this.right).cloud();
     }
 
+    if (this.opMode == "xo") {
+      let val = this.right.number();
+      let cb = new CloudBuilder();
+
+      for (let e of this.left.cloud().values) {
+        if (!e.sources)
+          throw new Error(
+            "Tried to explode a value that couldnt be traced back to a die"
+          );
+        let sources = e.k.map((n, i) =>
+          BinaryOperation.applyOp(n, this.op, val)
+            ? new Die(e.sources[i].sides)
+                .cloud()
+                .collapse((k) => [parseFloat(k) + n])
+            : new NumberValue(n)
+        );
+        if (sources.length == 0) cb.add(e.k, e.w);
+        else {
+          let d = new SetValue(sources).cloud();
+          for (let o of d.values) {
+            cb.add(o.k, (o.w / d.total) * e.w);
+          }
+        }
+      }
+
+      return cb.done();
+    }
+
     if (this.opMode === "cs") {
       let val = this.right.number();
 
@@ -428,7 +456,7 @@ class BinaryOperation {
       });
     }
 
-    if (this.opMode === "ro") {
+    if (this.opMode === "ro" || this.opMode === "r") {
       let val = this.right.number();
 
       let cb = new CloudBuilder();
@@ -441,7 +469,19 @@ class BinaryOperation {
               throw new Error(
                 "Tried to reroll a value that couldnt be traced back to a die"
               );
-            reroll.push(new Die(e.sources[i].sides));
+            if (this.opMode == "ro") {
+              reroll.push(new Die(e.sources[i].sides));
+            } else {
+              let c = new Die(e.sources[i].sides).denseCloud();
+              let cbi = new CloudBuilder();
+              for (let o of c.values) {
+                console.log(o.k[0], this.op, val);
+                if (!BinaryOperation.applyOp(o.k[0], this.op, val)) {
+                  cbi.add(o.k, o.w);
+                }
+              }
+              reroll.push(cbi.done());
+            }
           } else {
             okay.push(e.k[i]);
           }
@@ -464,6 +504,7 @@ class BinaryOperation {
     }
 
     if (this.opMode === "zu") {
+      // Drop dice that dont meet some criteria
       let val = this.right.number();
 
       let cb = new CloudBuilder();

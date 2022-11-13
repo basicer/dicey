@@ -101,7 +101,8 @@ function repeat(a, b) {
 }
 
 function explode(...args) {
-  let vs = args[0].denseCloud().values;
+  let dc = args[0].denseCloud();
+  let vs = dc.values;
   vs.sort((a, b) => ksort(a.k, b.k));
   let best = vs.shift();
   let C = new CloudBuilder();
@@ -109,7 +110,7 @@ function explode(...args) {
 
   for (let i = 0; i <= n; ++i) {
     let extra = new Array(i).fill(best.k[0]);
-    let penalty = 1 / Math.pow(vs.length + 1, i);
+    let penalty = Math.pow(best.w / dc.total, i);
     let ls = i == n ? [].concat(vs, best) : vs;
     for (let o of ls) {
       let ne = [].concat(extra, o.k);

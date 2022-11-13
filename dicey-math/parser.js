@@ -41,8 +41,12 @@ Call =
     return {type: 'call', name:n, args:a}; 
   }
 
+CompareTypes = $('cs'i / 'ms'i / 'xo' / 'ro'i / 'zu'i / 'r'i)
+Op = $([<>]'='?/'=='/'!='/'=')
+Compare =
+  m:$(CompareTypes)? o:Op { return m ? {m: m, op: o} : {op: o}; } /
+  m:CompareTypes { return {m: m, op: "="}; }
 
-Compare = m:$('cs'i / 'ms'i / 'ro'i / 'zu'i)? o:$([<>]'='?/'=='/'!='/'=') { return m ? {m: m, op: o} : {op: o}; }
 
 P1Bin = l:P2Bin o:(WS e:Compare WS r:P2Bin)* { return math(l,o) } / P2Bin
 P2Bin = l:P3Bin o:(WS e:[+-] WS r:P3Bin)* { return math(l,o); } / P3Bin

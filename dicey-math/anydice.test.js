@@ -102,6 +102,7 @@ anytest("d(d6)", "function: z F:n { result: dF } output [z d6]");
 anytest("d(d6) + d(d6)", "function: z F:n { result: dF } output [z d6]+[z d6]");
 anytest("6d(d6)", "function: z F:n { result: 6dF } output [z d6]");
 anytest("(d6)d(d6)", "function: z F:n { result: (d6)dF } output [z d6]");
+anytest("(d6)d6", "output d6d6");
 anytest(
   "((d6)d(d6)) kh 2",
   "function: z F:n { result: (d6)dF } output [highest 2 of [z d6]]"
@@ -118,3 +119,35 @@ anytest("contains(3d6, 6)", "output [3d6 contains 6]");
 anytest("count(3d6, 6)", "output [count 6 in 3d6]");
 
 anytest("{1d20,10}kh + 5", "output 5 + [highest of d20 and 10]");
+
+anytest("explode(2d6,1)", 'set "explode depth" to 1\noutput [explode 2d6]');
+anytest("2d6xo=6", 'set "explode depth" to 1\noutput 2d[explode d6]');
+anytest(
+  "d6xo>3",
+  `
+function: explode N:n {
+ if N > 3 { result: N + [explode d6] }
+ result: N
+}
+
+set "maximum function depth" to 2
+output [explode d6]
+`
+);
+anytest(
+  "2d6xo>3",
+  `
+function: explode N:n {
+ if N > 3 { result: N + [explode d6] }
+ result: N
+}
+
+set "maximum function depth" to 2
+output 2d[explode d6]
+`
+);
+
+anytest(
+  "(5d10xo=10)kh3",
+  'set "explode depth" to 1\noutput [highest 3 of 5d[explode d10]]'
+);

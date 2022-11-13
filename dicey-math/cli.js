@@ -12,6 +12,9 @@ while (args[0] && args[0].startsWith("--")) {
     case "roll":
       mode = "roll";
       break;
+    case "full":
+      mode = "full";
+      break;
     default:
       console.error(`Unknown argument: ${argument}`);
       process.exit(1);
@@ -46,7 +49,7 @@ if (mode == "roll") {
 let dcs = ast.output();
 
 for (let op of dcs) {
-  let dc = op.denseCloud();
+  let dc = mode == "full" ? op.cloud() : op.denseCloud();
 
   if (dc.sum) console.log(op.name + ":", "\t", "Avg: ", dc.sum / dc.total);
   else console.log(op.name + ":");
@@ -56,7 +59,10 @@ for (let op of dcs) {
     .reduce((a, b) => (a > b ? a : b), 0);
   let scale = 30 / max;
 
-  for (let v of dc.values) {
+  let vl = [].concat(dc.values);
+  if (mode != "full") vl.sort((a, b) => parseFloat(a.k) - parseFloat(b.k));
+
+  for (let v of vl) {
     let share = parseFloat(v.w) / dc.total;
     if (isNaN(share)) share = 0;
 
