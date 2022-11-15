@@ -1,7 +1,7 @@
 import { atom, selector } from "recoil";
 
 import compile from "dicey.js";
-import worker from "workerize-loader!./worker"; // eslint-disable-line import/no-webpack-loader-syntax
+import worker from "!!workerize-loader!./worker"; // eslint-disable-line import/no-webpack-loader-syntax
 
 let workerInstance = worker();
 

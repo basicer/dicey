@@ -2,8 +2,7 @@
   "name": "dicey-workspaces",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "prettier": "^2.3.2"
   },
