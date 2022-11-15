@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdicey_site=self.webpackChunkdicey_site||[]).push([[45],{8045:function(e,s,t){e.exports=t.p+"static/media/about.524a0b54a37b70de7df6.md"}}]);
