@@ -57,8 +57,11 @@ const style = (theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     width: theme.spacing(7),
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       width: theme.spacing(9),
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: 0,
     },
   },
   appBarSpacer: theme.mixins.toolbar,
@@ -70,6 +73,9 @@ const style = (theme) => ({
   container: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
+    [theme.breakpoints.down("xs")]: {
+      padding: theme.spacing(1),
+    },
   },
   paper: {
     padding: theme.spacing(2),

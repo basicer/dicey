@@ -73,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
     height: "calc(100vh - 350px)",
     minHeight: 300,
     "& div": { height: "100%" },
+    [theme.breakpoints.down("xs")]: {
+      "& div": { padding: theme.spacing(1) },
+      maxHeight: "200vw"
+    },
   },
   pre: { whiteSpace: "nowrap" },
   paper: { position: "relative" },
@@ -95,6 +99,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     paddingLeft: theme.spacing(1),
   },
+  optionbar: {
+    [theme.breakpoints.down("xs")]: {
+      display: 'inline-flex',
+      padding: theme.spacing(1)
+    },
+  }
 }));
 
 function a11yProps(index) {
@@ -283,7 +293,7 @@ export default function Calculate() {
     <>
       <CalcInput />
       <Card className={classes.bar}>
-        <CardActions>
+        <CardActions className={classes.optionbar}>
           <OptionBar />
         </CardActions>
       </Card>

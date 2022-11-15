@@ -48,7 +48,7 @@ export default function Chart() {
   let [data, setData] = useState({ datasets: [] });
   let [first, setFirst] = useState(true);
 
-  let className = "";
+  let className = "diceyChart";
 
   useEffect(() => {
     let labels = {};
@@ -162,7 +162,6 @@ export default function Chart() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sample, theme]);
 
-  console.log("CHART", options, data);
   return (
     <ChartComponent
       type="line"
