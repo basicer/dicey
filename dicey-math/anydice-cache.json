@@ -22504,5 +22504,25 @@
 			"maxY": 6.00387231367
 		},
 		"query": "output d6d6"
+	},
+	"output 1+0": {
+		"distributions": {
+			"data": [
+				[
+					[
+						1,
+						100
+					]
+				]
+			],
+			"labels": [
+				"output 1"
+			],
+			"minX": 1,
+			"maxX": 1,
+			"minY": 0,
+			"maxY": 100
+		},
+		"query": "output 1+0"
 	}
 }

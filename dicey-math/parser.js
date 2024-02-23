@@ -4,6 +4,15 @@ module.exports = `
   function math(l,o) {
      let v = l;
      for (let i = 0; i < o.length; i++) {
+       v = {type: 'math', right: o[i][3], left: v};
+       if (typeof(o[i][1]) == "string") v.op = o[i][1];
+       else Object.assign(v, o[i][1]);
+     }
+     return v;
+  }
+    function implicitMath(l,o) { // For DropLowest et al., there may or may not be an operand so assume 1 by default.
+     let v = l;
+     for (let i = 0; i < o.length; i++) {
        v = {type: 'math', right: o[i][3] || 1, left: v};
        if (typeof(o[i][1]) == "string") v.op = o[i][1];
        else Object.assign(v, o[i][1]);
@@ -52,7 +61,7 @@ P1Bin = l:P2Bin o:(WS e:Compare WS r:P2Bin)* { return math(l,o) } / P2Bin
 P2Bin = l:P3Bin o:(WS e:[+-] WS r:P3Bin)* { return math(l,o); } / P3Bin
 P3Bin = l:P4Bin o:(WS e:[*/] WS r:P4Bin)* { return math(l,o) } / P4Bin
 P4Bin = 
-  l:Primary o:(WS e:(DropLow/DropHigh/KeepLow/KeepHigh/'@') WS r:Primary?)* { return math(l,o) } /
+  l:Primary o:(WS e:(DropLow/DropHigh/KeepLow/KeepHigh/'@') WS r:Primary?)* { return implicitMath(l,o) } /
   Primary
 
 DropLow = ('droplow'i / 'dl'i) { return 'dl'; } 
