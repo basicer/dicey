@@ -12,13 +12,13 @@ Add the elements of each set to one big set.
 
 ### `contains(search, target)`
 
-Returns the field represneting the chance of containing a number.
+Returns the field representing the chance of containing a number.
 
 &gt; <kbd>contains(3d6,6)</kbd>
 
 ### `count(search, target)`
 
-Returns the field represneting the chance of getting a number of target values.
+Returns the field representing the chance of getting a number of target values.
 
 &gt; <kbd>count(3d6,6)</kbd>
 
@@ -50,7 +50,7 @@ Find the minimum possible outcome in a field.
 
 &gt; <kbd>min(d6)</kbd> = 1
 
-&gt; <kbd>min(3d6)</kbd> = 2
+&gt; <kbd>min(3d6)</kbd> = 3
 
 ### `normal(range, stddev)`
 
@@ -62,7 +62,7 @@ output 3d6</kbd>
 
 ### `repeat(what, times)`
 
-A set containing the elment `cloud` repeated `times` times.
+A set containing the element `cloud` repeated `times` times.
 
 &gt; <kbd>repeat(d6, 3)</kbd> = <kbd>3d6</kbd>
 
