@@ -71,6 +71,7 @@ anytest("100d6");
 anytest("300d6");
 anytest("500d6");
 
+anytest("1+0");
 anytest("500/10/5");
 anytest("2+2*2");
 anytest("2*2+2");
